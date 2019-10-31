@@ -1,5 +1,5 @@
 {% extends "wagtailadmin/widgets/chooser.html" %}
-{% load thumbnail %}
+{% load image_tags %}
 
 {% block chooser_class %}product-chooser{% endblock %}
 
@@ -8,9 +8,8 @@
     {% if product.primary_image %}
     <div class="image">
         {% with image=product.primary_image %}
-            {% thumbnail image.original "x155" upscale=False as thumb %}
+            {% oscar_thumbnail image.original "x155" upscale=False as thumb %}
             <img src="{{ thumb.url }}" alt="{{ product.get_title }}" class="thumbnail">
-            {% endthumbnail %}
         {% endwith %}
     </div>
     {% endif %}
